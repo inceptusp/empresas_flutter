@@ -1,0 +1,101 @@
+{
+  "@@locale": "pt",
+  "title": "Empresas",
+  "@title": {
+    "description": "App title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "welcomeTitle": "Seja bem vindo ao empresas!",
+  "@welcomeTitle": {
+    "description": "Welcome title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "emailLabel": "Email",
+  "@emailLabel": {
+    "description": "Email label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordLabel": "Senha",
+  "@passwordLabel": {
+    "description": "Password label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "signInLabel": "Entrar",
+  "@signInLabel": {
+    "description": "Sign in label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "searchBoxLabel": "Procurar por empresas",
+  "@searchBoxLabel": {
+    "description": "Search box label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "mandatoryFieldLabel": "Este campo é obrigatório",
+  "@mandatoryFieldLabel": {
+    "description": "Mandatory field validation error label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "resultsFoundLabel": "{results, plural, =0 {Nenhum resultado encontrado} =1 {1 resultado encontrado} other {{results} resultados encontrados}}",
+  "@resultsFoundLabel": {
+    "description": "Results found label text",
+    "type": "text",
+    "placeholders": {
+      "results": {}
+    }
+  },
+  "closeButtonLabel": "Fechar",
+  "@closeButtonLabel": {
+    "description": "Close button label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "errorCodeLabel": "Código de erro",
+  "@errorCodeLabel": {
+    "description": "Error code label text",
+    "type": "text",
+    "placeholders": {}
+  },
+  "unknownErrorAlertTitle": "Erro desconhecido",
+  "@unknownErrorAlertTitle": {
+    "description": "Unknown error alert title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "unknownErrorAlertMessage": "Oops! Você acabou de esbarrar em um erro que ainda não conhecemos, por favor entre em contato conosco informando o código abaixo para que possamos consertá-lo",
+  "@unknownErrorAlertMessage": {
+    "description": "Unknown error alert message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "wrongCredentialsErrorAlertTitle": "Credenciais incorretas",
+  "@wrongCredentialsErrorAlertTitle": {
+    "description": "Wrong credentials error alert title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "wrongCredentialsErrorAlertMessage": "As credenciais fornecidas são inválidas. Por favor verifique as informações e tente novamente.",
+  "@wrongCredentialsErrorAlertMessage": {
+    "description": "Wrong credentials error alert message",
+    "type": "text",
+    "placeholders": {}
+  },
+  "connectionErrorAlertTitle": "Erro de conexão",
+  "@connectionErrorAlertTitle": {
+    "description": "Connection error alert title",
+    "type": "text",
+    "placeholders": {}
+  },
+  "connectionErrorAlertMessage": "Ocorreu um erro ao acessar a internet, por favor verifique sua conexão e tente novamente mais tarde.",
+  "@connectionErrorAlertMessage": {
+    "description": "Connection error alert message",
+    "type": "text",
+    "placeholders": {}
+  }
+}
