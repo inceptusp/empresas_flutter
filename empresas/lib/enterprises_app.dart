@@ -1,8 +1,8 @@
 import 'package:empresas/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:provider/provider.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class EnterprisesApp extends StatefulWidget {
   const EnterprisesApp({Key? key}) : super(key: key);
 
@@ -15,12 +15,15 @@ class _EnterprisesAppState extends State<EnterprisesApp> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: _unfocusTextFields,
-      child: MaterialApp(
-        onGenerateTitle: (context) => EnterprisesLocalizations.of(context)!.title,
-        supportedLocales: EnterprisesLocalizations.supportedLocales,
-        localizationsDelegates: EnterprisesLocalizations.localizationsDelegates,
-        theme: _lightTheme(),
-        home: const SplashPage(),
+      child: Provider(
+        create: (context) {},
+        child: MaterialApp(
+          onGenerateTitle: (context) => EnterprisesLocalizations.of(context)!.title,
+          supportedLocales: EnterprisesLocalizations.supportedLocales,
+          localizationsDelegates: EnterprisesLocalizations.localizationsDelegates,
+          theme: _lightTheme(),
+          home: const SplashPage(),
+        ),
       ),
     );
   }
