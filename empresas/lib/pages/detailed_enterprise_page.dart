@@ -1,5 +1,6 @@
 import 'package:empresas/helpers/enterprises_api.dart';
 import 'package:empresas/helpers/entity_classes/enterprise.dart';
+import 'package:empresas/widgets/eliptical_progress_indicator.dart';
 import 'package:flutter/material.dart';
 
 class DetailedEnterprisePage extends StatelessWidget {
@@ -24,11 +25,7 @@ class DetailedEnterprisePage extends StatelessWidget {
               return SizedBox(
                 height: 200,
                 child: Center(
-                  child: CircularProgressIndicator(
-                    value: progress.expectedTotalBytes != null
-                        ? progress.cumulativeBytesLoaded / progress.expectedTotalBytes!
-                        : null,
-                  ),
+                  child: ElipticalProgressIndicator(),
                 ),
               );
             },
