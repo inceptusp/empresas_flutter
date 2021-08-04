@@ -22,8 +22,3 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    always_use_package_imports: true
-    directives_ordering: true
-    prefer_expression_function_bodies: true
-    prefer_single_quotes: true
-    unnecessary_getters_setters: true
