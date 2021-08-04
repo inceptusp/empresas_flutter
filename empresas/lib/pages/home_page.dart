@@ -10,7 +10,6 @@ import 'package:empresas/widgets/sliver_home_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 

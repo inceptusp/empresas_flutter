@@ -1,7 +1,6 @@
 import 'package:empresas/pages/login_page.dart';
 import 'package:flutter/material.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
 

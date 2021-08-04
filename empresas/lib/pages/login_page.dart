@@ -8,7 +8,6 @@ import 'package:empresas/widgets/sliver_login_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
 

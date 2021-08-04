@@ -35,7 +35,6 @@ class Enterprise {
     this.country,
   });
 
-  // ignore: prefer_expression_function_bodies, for better readability of this method
   factory Enterprise.fromJson(Map<String, dynamic> json) {
     return Enterprise(
       id: json['id'],
