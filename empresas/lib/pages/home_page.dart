@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:empresas/helpers/enterprises_api.dart';
-import 'package:empresas/helpers/entity_classes/enterprise.dart';
+import 'package:empresas/helpers/entities/enterprise.dart';
 import 'package:empresas/pages/detailed_enterprise_page.dart';
 import 'package:empresas/widgets/eliptical_progress_indicator.dart';
 import 'package:empresas/widgets/enterprise_card.dart';
