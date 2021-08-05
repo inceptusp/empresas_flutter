@@ -1,14 +1,15 @@
 import 'dart:io';
 
+import 'package:empresas/helpers/utils/app_navigator.dart';
 import 'package:empresas/helpers/enterprises_api.dart';
 import 'package:empresas/helpers/entities/enterprise.dart';
-import 'package:empresas/pages/detailed_enterprise_page.dart';
 import 'package:empresas/widgets/eliptical_progress_indicator.dart';
 import 'package:empresas/widgets/enterprise_card.dart';
 import 'package:empresas/widgets/error_messages.dart';
 import 'package:empresas/widgets/sliver_home_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -20,6 +21,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   List<Enterprise>? _enterprises;
   bool _isSearching = false;
+  late AppNavigator appNavigator;
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +57,7 @@ class _HomePageState extends State<HomePage> {
                 (context, i) {
                   return EnterpriseCard(
                     enterprise: _enterprises![i],
-                    onTap: () => _openDetailedEnterprisesPage(_enterprises![i]),
+                    onTap: () => appNavigator.goToEnterpriseDetails(context, _enterprises![i]),
                   );
                 },
                 childCount: _enterprises!.length,
@@ -66,25 +68,10 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void _showErrorAlert([String error = '']) {
-    showDialog(
-      context: context,
-      builder: (context) => ErrorMessage.errorAlert(
-        context: context,
-        errorCode: error,
-        onClose: () => Navigator.pop(context),
-      ),
-    );
-  }
-
-  void _openDetailedEnterprisesPage(Enterprise enterprise) {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => DetailedEnterprisePage(enterprise: enterprise),
-        settings: const RouteSettings(name: '/DetailedEnterprisePage'),
-      ),
-    );
+  @override
+  void initState() {
+    appNavigator = context.read<AppNavigator>();
+    super.initState();
   }
 
   void _searchEnterprises(String query) async {
@@ -101,5 +88,16 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _isSearching = false;
     });
+  }
+
+  void _showErrorAlert([String error = '']) {
+    showDialog(
+      context: context,
+      builder: (context) => ErrorMessage.errorAlert(
+        context: context,
+        errorCode: error,
+        onClose: () => appNavigator.pop(context),
+      ),
+    );
   }
 }

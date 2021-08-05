@@ -1,11 +1,12 @@
+import 'package:empresas/helpers/utils/app_navigator.dart';
 import 'package:empresas/helpers/controllers/login_controller.dart';
-import 'package:empresas/pages/home_page.dart';
 import 'package:empresas/widgets/eliptical_progress_indicator.dart';
 import 'package:empresas/widgets/error_messages.dart';
 import 'package:empresas/widgets/sliver_login_appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final LoginController loginController = LoginController();
+  late AppNavigator appNavigator;
 
   @override
   Widget build(BuildContext context) {
@@ -108,29 +110,29 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  @override
+  void initState() {
+    appNavigator = context.read<AppNavigator>();
+    super.initState();
+  }
+
   void _showErrorAlert([String error = '']) {
     showDialog(
       context: context,
       builder: (context) => ErrorMessage.errorAlert(
         context: context,
         errorCode: error,
-        onClose: () => Navigator.pop(context),
+        onClose: () => appNavigator.pop(context),
       ),
     );
   }
 
   void _signIn() async {
     if (loginController.signInResponse == 'success') {
-      Navigator.pop(context);
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => const HomePage(),
-          settings: const RouteSettings(name: '/HomePage'),
-        ),
-      );
+      appNavigator.pop(context);
+      appNavigator.replaceWithHome(context);
     } else {
-      Navigator.pop(context);
+      appNavigator.pop(context);
       _showErrorAlert(loginController.signInResponse);
     }
   }

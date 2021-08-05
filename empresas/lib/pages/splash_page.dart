@@ -1,5 +1,6 @@
-import 'package:empresas/pages/login_page.dart';
+import 'package:empresas/helpers/utils/app_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -9,6 +10,8 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
+  late AppNavigator appNavigator;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,21 +37,11 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
+    appNavigator = context.read<AppNavigator>();
     super.initState();
     Future.delayed(
       const Duration(seconds: 1),
-      () => _navigateToLogin(),
-    );
-  }
-
-  void _navigateToLogin() {
-    Navigator.pushReplacement(
-      context,
-      PageRouteBuilder(
-        transitionDuration: const Duration(seconds: 2),
-        pageBuilder: (_, __, ___) => const LoginPage(),
-        settings: const RouteSettings(name: '/LoginPage'),
-      ),
+      () => appNavigator.replaceWithLogin(context),
     );
   }
 }
