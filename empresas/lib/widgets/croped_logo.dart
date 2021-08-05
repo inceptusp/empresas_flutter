@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class CropedLogo extends StatelessWidget {
   const CropedLogo({Key? key}) : super(key: key);
 

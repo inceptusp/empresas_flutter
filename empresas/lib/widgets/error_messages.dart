@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 
-// ignore_for_file: prefer_expression_function_bodies
 class ErrorMessage {
   static Widget errorAlert({
     required BuildContext context,

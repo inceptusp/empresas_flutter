@@ -2,7 +2,6 @@ import 'package:empresas/widgets/croped_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class SliverLoginAppBar extends StatelessWidget {
   const SliverLoginAppBar({Key? key}) : super(key: key);
 

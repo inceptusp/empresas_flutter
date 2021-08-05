@@ -17,8 +17,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final LoginController loginController = LoginController();
-  late AppNavigator appNavigator;
+  final LoginController _loginController = LoginController();
+  late AppNavigator _appNavigator;
 
   @override
   Widget build(BuildContext context) {
@@ -40,26 +40,26 @@ class _LoginPageState extends State<LoginPage> {
                         decoration: InputDecoration(
                           labelText: EnterprisesLocalizations.of(context)!.emailLabel,
                         ),
-                        validator: (value) => loginController.emailValidator(context, value),
-                        onChanged: loginController.changeEmail,
+                        validator: (value) => _loginController.emailValidator(context, value),
+                        onChanged: _loginController.changeEmail,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16.0),
                       child: Observer(
                         builder: (context) => TextFormField(
-                          obscureText: !loginController.isShowingPassword,
+                          obscureText: !_loginController.isShowingPassword,
                           decoration: InputDecoration(
                             labelText: EnterprisesLocalizations.of(context)!.passwordLabel,
                             suffixIcon: IconButton(
-                              onPressed: loginController.showPassword,
-                              icon: loginController.isShowingPassword
+                              onPressed: _loginController.showPassword,
+                              icon: _loginController.isShowingPassword
                                   ? const Icon(Icons.remove_red_eye_outlined)
                                   : const Icon(Icons.remove_red_eye),
                             ),
                           ),
-                          validator: (value) => loginController.passwordValidator(context, value),
-                          onChanged: loginController.changePassword,
+                          validator: (value) => _loginController.passwordValidator(context, value),
+                          onChanged: _loginController.changePassword,
                         ),
                       ),
                     ),
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                                   );
                                 },
                               );
-                              await loginController.signIn(_formKey);
+                              await _loginController.signIn(_formKey);
                               _signIn();
                             },
                             style: ElevatedButton.styleFrom(
@@ -112,7 +112,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   void initState() {
-    appNavigator = context.read<AppNavigator>();
+    _appNavigator = context.read<AppNavigator>();
     super.initState();
   }
 
@@ -122,18 +122,18 @@ class _LoginPageState extends State<LoginPage> {
       builder: (context) => ErrorMessage.errorAlert(
         context: context,
         errorCode: error,
-        onClose: () => appNavigator.pop(context),
+        onClose: () => _appNavigator.pop(context),
       ),
     );
   }
 
   void _signIn() async {
-    if (loginController.signInResponse == 'success') {
-      appNavigator.pop(context);
-      appNavigator.replaceWithHome(context);
+    if (_loginController.signInResponse == 'success') {
+      _appNavigator.pop(context);
+      _appNavigator.replaceWithHome(context);
     } else {
-      appNavigator.pop(context);
-      _showErrorAlert(loginController.signInResponse);
+      _appNavigator.pop(context);
+      _showErrorAlert(_loginController.signInResponse);
     }
   }
 }

@@ -2,7 +2,6 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-// ignore_for_file: prefer_expression_function_bodies, for better readability on Widgets files
 class ElipticalProgressIndicator extends StatefulWidget {
   const ElipticalProgressIndicator({Key? key}) : super(key: key);
 
