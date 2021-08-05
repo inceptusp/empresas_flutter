@@ -93,22 +93,22 @@ mixin _$LoginController on _LoginControllerBase, Store {
   }
 
   @override
-  String? emailValidator(BuildContext context, String? value) {
+  void changePassword(dynamic value) {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
-        name: '_LoginControllerBase.emailValidator');
+        name: '_LoginControllerBase.changePassword');
     try {
-      return super.emailValidator(context, value);
+      return super.changePassword(value);
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }
   }
 
   @override
-  void changePassword(dynamic value) {
+  String? emailValidator(BuildContext context, String? value) {
     final _$actionInfo = _$_LoginControllerBaseActionController.startAction(
-        name: '_LoginControllerBase.changePassword');
+        name: '_LoginControllerBase.emailValidator');
     try {
-      return super.changePassword(value);
+      return super.emailValidator(context, value);
     } finally {
       _$_LoginControllerBaseActionController.endAction(_$actionInfo);
     }
