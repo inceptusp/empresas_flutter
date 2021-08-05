@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:empresas/helpers/enterprises_api.dart';
 import 'package:flutter/widgets.dart';
-import 'package:mobx/mobx.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
+import 'package:mobx/mobx.dart';
 
 part 'login_controller.g.dart';
 
@@ -16,8 +16,17 @@ abstract class _LoginControllerBase with Store {
   @observable
   String email = '';
 
+  @observable
+  String password = '';
+
+  @observable
+  bool isShowingPassword = false;
+
   @action
   void changeEmail(value) => email = value;
+
+  @action
+  void changePassword(value) => password = value;
 
   @action
   String? emailValidator(BuildContext context, String? value) {
@@ -27,12 +36,6 @@ abstract class _LoginControllerBase with Store {
     return null;
   }
 
-  @observable
-  String password = '';
-
-  @action
-  void changePassword(value) => password = value;
-
   @action
   String? passwordValidator(BuildContext context, String? value) {
     if (value == null || value.isEmpty) {
@@ -40,9 +43,6 @@ abstract class _LoginControllerBase with Store {
     }
     return null;
   }
-
-  @observable
-  bool isShowingPassword = false;
 
   @action
   void showPassword() => isShowingPassword = !isShowingPassword;
