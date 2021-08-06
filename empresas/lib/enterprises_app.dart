@@ -1,4 +1,4 @@
-import 'package:empresas/pages/splash_page.dart';
+import 'package:empresas/shared/presentation/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 

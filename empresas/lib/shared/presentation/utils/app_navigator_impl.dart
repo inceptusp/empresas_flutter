@@ -1,22 +1,22 @@
 import 'dart:io';
 
-import 'package:empresas/helpers/utils/app_navigator.dart';
-import 'package:empresas/helpers/entities/enterprise.dart';
-import 'package:empresas/pages/detailed_enterprise_page.dart';
-import 'package:empresas/pages/home_page.dart';
-import 'package:empresas/pages/login_page.dart';
+import 'package:empresas/shared/presentation/utils/app_navigator.dart';
+import 'package:empresas/shared/domain/entities/enterprise.dart';
+import 'package:empresas/features/list_enterprises/presentation/pages/enterprise_details_page.dart';
+import 'package:empresas/features/list_enterprises/presentation/pages/home_page.dart';
+import 'package:empresas/features/sign_in/presentation/pages/login_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class AppNavigatorImpl implements AppNavigator {
   @override
   void goToEnterpriseDetails(BuildContext context, Enterprise enterprise) {
-    const RouteSettings routeSettings = RouteSettings(name: '/DetailedEnterprisePage');
+    const RouteSettings routeSettings = RouteSettings(name: '/EnterpriseDetailsPage');
     if (Platform.isAndroid) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => DetailedEnterprisePage(enterprise: enterprise),
+          builder: (context) => EnterpriseDetailsPage(enterprise: enterprise),
           settings: routeSettings,
         ),
       );
@@ -24,7 +24,7 @@ class AppNavigatorImpl implements AppNavigator {
       Navigator.push(
         context,
         CupertinoPageRoute(
-          builder: (context) => DetailedEnterprisePage(enterprise: enterprise),
+          builder: (context) => EnterpriseDetailsPage(enterprise: enterprise),
           settings: routeSettings,
         ),
       );

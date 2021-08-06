@@ -1,4 +1,4 @@
-import 'package:empresas/widgets/croped_logo.dart';
+import 'package:empresas/shared/presentation/widgets/croped_logo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 

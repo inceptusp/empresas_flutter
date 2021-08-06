@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:empresas/helpers/enterprises_api.dart';
+import 'package:empresas/shared/data/datasources/enterprises_api.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:mobx/mobx.dart';

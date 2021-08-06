@@ -1,4 +1,4 @@
-import 'package:empresas/helpers/utils/app_navigator.dart';
+import 'package:empresas/shared/presentation/utils/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

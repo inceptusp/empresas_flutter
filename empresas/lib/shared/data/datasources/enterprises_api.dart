@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:empresas/helpers/entities/enterprise.dart';
+import 'package:empresas/shared/domain/entities/enterprise.dart';
 import 'package:http/http.dart' as http;
 
 class EnterprisesApi {

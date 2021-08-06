@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:empresas/helpers/enterprises_api.dart';
-import 'package:empresas/helpers/entities/enterprise.dart';
+import 'package:empresas/shared/data/datasources/enterprises_api.dart';
+import 'package:empresas/shared/domain/entities/enterprise.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';
