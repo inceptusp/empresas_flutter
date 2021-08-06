@@ -3,7 +3,7 @@ import 'package:empresas/shared/presentation/widgets/error_messages.dart';
 import 'package:empresas/features/list_enterprises/presentation/controllers/home_controller.dart';
 import 'package:empresas/features/list_enterprises/presentation/widgets/enterprise_card.dart';
 import 'package:empresas/features/list_enterprises/presentation/widgets/sliver_home_appbar.dart';
-import 'package:empresas/shared/presentation/utils/app_navigator.dart';
+import 'package:empresas/shared/utils/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';

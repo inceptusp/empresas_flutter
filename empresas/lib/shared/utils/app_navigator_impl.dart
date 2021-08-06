@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:empresas/shared/presentation/utils/app_navigator.dart';
-import 'package:empresas/shared/domain/entities/enterprise.dart';
+import 'package:empresas/shared/utils/app_navigator.dart';
+import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 import 'package:empresas/features/list_enterprises/presentation/pages/enterprise_details_page.dart';
 import 'package:empresas/features/list_enterprises/presentation/pages/home_page.dart';
 import 'package:empresas/features/sign_in/presentation/pages/login_page.dart';

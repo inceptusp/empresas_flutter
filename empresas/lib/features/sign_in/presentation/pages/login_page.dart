@@ -2,7 +2,7 @@ import 'package:empresas/shared/presentation/widgets/eliptical_progress_indicato
 import 'package:empresas/shared/presentation/widgets/error_messages.dart';
 import 'package:empresas/features/sign_in/presentation/controllers/login_controller.dart';
 import 'package:empresas/features/sign_in/presentation/widgets/sliver_login_appbar.dart';
-import 'package:empresas/shared/presentation/utils/app_navigator.dart';
+import 'package:empresas/shared/utils/app_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
