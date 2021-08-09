@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
+import 'package:empresas/features/list_enterprises/data/models/enterprise_model.dart';
 import 'package:http/http.dart' as http;
 
 class EnterprisesApi {
@@ -38,7 +39,7 @@ class EnterprisesApi {
     if (response.statusCode == 200) {
       List<dynamic> enterprisesFromApi = json.decode(response.body)['enterprises'];
       for (var item in enterprisesFromApi) {
-        enterprises.add(Enterprise.fromJson(item));
+        enterprises.add(EnterpriseModel.fromJson(item));
       }
     }
     return enterprises;
