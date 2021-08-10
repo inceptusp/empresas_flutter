@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:empresas/shared/data/datasources/enterprises_api.dart';
+import 'package:empresas/shared/data/datasources/enterprises_remote_api.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 import 'package:flutter/material.dart';
 
