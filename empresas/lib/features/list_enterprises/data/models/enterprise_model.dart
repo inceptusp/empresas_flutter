@@ -57,4 +57,27 @@ class EnterpriseModel extends Enterprise {
       country: json['country'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return <String, dynamic>{
+      'id': id,
+      'email_enterprise': email,
+      'facebook': facebook,
+      'twitter': twitter,
+      'linkedin': linkedin,
+      'phone': phone,
+      'own_enterprise': ownEnterprise,
+      'enterprise_name': name,
+      'photo': photo,
+      'description': description,
+      'city': city,
+      'country': country,
+      'value': value,
+      'share_price': sharePrice,
+      'enterprise_type': <String, dynamic>{
+        'id': enterpriseTypeId,
+        'enterprise_type_name': enterpriseTypeName,
+      },
+    };
+  }
 }
