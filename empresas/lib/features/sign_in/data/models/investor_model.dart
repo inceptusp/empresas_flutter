@@ -12,7 +12,7 @@ class InvestorModel extends Investor {
     required balance,
     photo,
     required portfolioEnterprisesNumber,
-    required portfolioEnterprises,
+    required List<Enterprise> portfolioEnterprises,
     required portfolioValue,
     required firstAccess,
     required superAngel,
@@ -74,6 +74,9 @@ class InvestorModel extends Investor {
         'enterprises_number': portfolioEnterprisesNumber,
         'enterprises': portfolioEnterprisesList,
       },
+      'portfolio_value': portfolioValue,
+      'first_access': firstAccess,
+      'super_angel': superAngel,
     };
   }
 }
