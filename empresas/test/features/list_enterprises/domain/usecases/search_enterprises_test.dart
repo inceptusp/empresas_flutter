@@ -19,7 +19,20 @@ main() {
   });
 
   final String tQuery = 'superstore';
-  final List<Enterprise> tSearchResult = <Enterprise>[];
+  final List<Enterprise> tSearchResult = <Enterprise>[
+    Enterprise(
+      id: 1,
+      ownEnterprise: false,
+      name: 'Superstore',
+      description: 'Description test',
+      city: 'Bristol',
+      country: 'UK',
+      value: 100,
+      sharePrice: 100.0,
+      enterpriseTypeId: 1,
+      enterpriseTypeName: 'Commerce',
+    ),
+  ];
 
   test('Should get a list of searched enterprises', () async {
     when(mockListEnterprisesRepository.searchEnterprises(any)).thenAnswer(
