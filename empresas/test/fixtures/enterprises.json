@@ -8,16 +8,16 @@
             "linkedin": null,
             "phone": null,
             "own_enterprise": false,
-            "enterprise_name": "Fluoretiq Limited",
-            "photo": "/uploads/enterprise/photo/1/240.jpeg",
-            "description": "FluoretiQ is a Bristol based medtech start-up developing diagnostic technology to enable bacteria identification within the average consultation window, so that patients can get the right anti-biotics from the start.  ",
+            "enterprise_name": "Superstore",
+            "photo": null,
+            "description": "Description test",
             "city": "Bristol",
             "country": "UK",
-            "value": 0,
-            "share_price": 5000.0,
+            "value": 100,
+            "share_price": 100.0,
             "enterprise_type": {
-                "id": 3,
-                "enterprise_type_name": "Health"
+                "id": 1,
+                "enterprise_type_name": "Commerce"
             }
         },
         {
@@ -28,16 +28,16 @@
             "linkedin": null,
             "phone": null,
             "own_enterprise": false,
-            "enterprise_name": "Little Bee Community",
-            "photo": "/uploads/enterprise/photo/2/240.png",
-            "description": "Service and Product Design, Responsible Business",
+            "enterprise_name": "Bob's Restaurant",
+            "photo": null,
+            "description": "Description test",
             "city": "London",
             "country": "UK",
-            "value": 0,
-            "share_price": 5000.0,
+            "value": 10,
+            "share_price": 105.0,
             "enterprise_type": {
-                "id": 12,
-                "enterprise_type_name": "Service"
+                "id": 2,
+                "enterprise_type_name": "Food"
             }
         }
     ]
