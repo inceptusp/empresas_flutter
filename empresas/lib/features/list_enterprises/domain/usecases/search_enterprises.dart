@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 import 'package:empresas/features/list_enterprises/domain/repositories/list_enterprises_repository.dart';
 import 'package:empresas/shared/domain/usecases/usecase.dart';
-import 'package:empresas/shared/utils/failure.dart';
+import 'package:empresas/shared/errors/failure.dart';
 import 'package:equatable/equatable.dart';
 
 class SearchEnterprisesUsecase implements Usecase<List<Enterprise>, SearchParams> {

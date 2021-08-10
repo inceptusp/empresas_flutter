@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:empresas/features/sign_in/domain/entities/investor.dart';
 import 'package:empresas/features/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:empresas/shared/domain/usecases/usecase.dart';
-import 'package:empresas/shared/utils/failure.dart';
+import 'package:empresas/shared/errors/failure.dart';
 import 'package:equatable/equatable.dart';
 
 class SignInUsecase implements Usecase<Investor, SignInParams> {

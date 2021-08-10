@@ -5,11 +5,10 @@
 import 'dart:async' as _i4;
 
 import 'package:dartz/dartz.dart' as _i2;
-import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart'
-    as _i6;
+import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart' as _i6;
 import 'package:empresas/features/list_enterprises/domain/repositories/list_enterprises_repository.dart'
     as _i3;
-import 'package:empresas/shared/utils/failure.dart' as _i5;
+import 'package:empresas/shared/errors/failure.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: avoid_redundant_argument_values
@@ -25,27 +24,22 @@ class _FakeEither<L, R> extends _i1.Fake implements _i2.Either<L, R> {}
 /// A class which mocks [ListEnterprisesRepository].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockListEnterprisesRepository extends _i1.Mock
-    implements _i3.ListEnterprisesRepository {
+class MockListEnterprisesRepository extends _i1.Mock implements _i3.ListEnterprisesRepository {
   MockListEnterprisesRepository() {
     _i1.throwOnMissingStub(this);
   }
 
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>> searchEnterprises(
-          String? query) =>
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>> searchEnterprises(String? query) =>
       (super.noSuchMethod(Invocation.method(#searchEnterprises, [query]),
-              returnValue:
-                  Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>.value(
-                      _FakeEither<_i5.Failure, List<_i6.Enterprise>>()))
+              returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>.value(
+                  _FakeEither<_i5.Failure, List<_i6.Enterprise>>()))
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>);
   @override
-  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>
-      getAllEnterprises() => (super.noSuchMethod(
-              Invocation.method(#getAllEnterprises, []),
-              returnValue:
-                  Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>.value(
-                      _FakeEither<_i5.Failure, List<_i6.Enterprise>>()))
+  _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>> getAllEnterprises() =>
+      (super.noSuchMethod(Invocation.method(#getAllEnterprises, []),
+              returnValue: Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>.value(
+                  _FakeEither<_i5.Failure, List<_i6.Enterprise>>()))
           as _i4.Future<_i2.Either<_i5.Failure, List<_i6.Enterprise>>>);
   @override
   String toString() => super.toString();
