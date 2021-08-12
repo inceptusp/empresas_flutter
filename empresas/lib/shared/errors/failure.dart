@@ -7,3 +7,12 @@ class ServerFailure extends Failure {
   @override
   List<Object?> get props => List.empty();
 }
+
+class SignInFailure extends Failure {
+  final String message;
+
+  SignInFailure({required this.message});
+
+  @override
+  List<Object?> get props => <Object>[message];
+}

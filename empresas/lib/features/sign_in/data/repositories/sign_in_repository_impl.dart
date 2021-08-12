@@ -14,8 +14,10 @@ class SignInRepositoryImpl implements SignInRepository {
   Future<Either<Failure, Investor>> signIn(String email, String password) async {
     try {
       return Right(await datasource.signIn(email, password));
-    } on ServerException catch (_) {
+    } on ServerException {
       return Left(ServerFailure());
+    } on SignInFailure catch (f) {
+      return Left(SignInFailure(message: f.message));
     }
   }
 }

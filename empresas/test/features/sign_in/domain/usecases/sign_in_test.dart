@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:empresas/features/sign_in/domain/entities/investor.dart';
 import 'package:empresas/features/sign_in/domain/repositories/sign_in_repository.dart';
 import 'package:empresas/features/sign_in/domain/usecases/sign_in_usecase.dart';
+import 'package:empresas/shared/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -34,7 +35,7 @@ main() {
     superAngel: false,
   );
 
-  test('Should sign in', () async {
+  test('Should successfully sign in', () async {
     when(mockSignInRepository.signIn(any, any)).thenAnswer(
       (_) async => Right(tInvestor),
     );
@@ -44,5 +45,17 @@ main() {
     expect(result, Right(tInvestor));
     verify(mockSignInRepository.signIn(tEmail, tPassword));
     verifyNoMoreInteractions(mockSignInRepository);
+  });
+
+  test('Should return a SignInFailure on unsuccessful sign in', () async {
+    final Failure tFailure = SignInFailure(message: 'Wrong Credentials');
+    when(mockSignInRepository.signIn(any, any)).thenAnswer(
+      (_) async => Left(tFailure),
+    );
+
+    final result = await mockSignInRepository.signIn(tEmail, tPassword);
+
+    verify(mockSignInRepository.signIn(tEmail, tPassword));
+    expect(result, Left(tFailure));
   });
 }

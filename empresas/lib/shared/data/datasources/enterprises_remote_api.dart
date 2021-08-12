@@ -5,6 +5,7 @@ import 'package:empresas/features/list_enterprises/data/models/enterprise_model.
 import 'package:empresas/features/sign_in/data/datasource/sign_in_datasource.dart';
 import 'package:empresas/features/sign_in/data/models/investor_model.dart';
 import 'package:empresas/shared/errors/exceptions.dart';
+import 'package:empresas/shared/errors/failure.dart';
 import 'package:http/http.dart' as http;
 
 class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasource {
@@ -72,12 +73,12 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
     );
 
     if (response.statusCode == 200) {
-      try {
-        final Map<String, dynamic> bodyJson = json.decode(response.body);
+      final Map<String, dynamic> bodyJson = json.decode(response.body);
+      if (bodyJson['success']) {
         InvestorModel investor = InvestorModel.fromJson(bodyJson['investor']);
         return investor;
-      } catch (_) {
-        throw ServerException();
+      } else {
+        throw SignInFailure(message: bodyJson['errors'].first);
       }
     } else {
       throw ServerException();

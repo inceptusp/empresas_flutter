@@ -5,6 +5,7 @@ import 'package:empresas/features/list_enterprises/domain/entities/enterprise.da
 import 'package:empresas/features/sign_in/data/models/investor_model.dart';
 import 'package:empresas/shared/data/datasources/enterprises_remote_api.dart';
 import 'package:empresas/shared/errors/exceptions.dart';
+import 'package:empresas/shared/errors/failure.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
@@ -153,7 +154,7 @@ main() {
     });
 
     test(
-        'Should throw a ServerException when the response is HTTP 200 and the sign in was NOT successful',
+        'Should throw a SignInFailure when the response is HTTP 200 and the sign in was NOT successful',
         () async {
       when(mockHttpClient.post(
         any,
@@ -165,7 +166,7 @@ main() {
 
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
-      expect(call, throwsA(TypeMatcher<ServerException>()));
+      expect(call, throwsA(TypeMatcher<SignInFailure>()));
     });
 
     test('Should thrown a ServerException on signIn when the response is NOT HTTP 200', () async {
