@@ -1,7 +1,6 @@
-import 'dart:io';
-
-import 'package:empresas/shared/data/datasources/enterprises_remote_api.dart';
+import 'package:empresas/features/list_enterprises/domain/usecases/search_enterprises.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
+import 'package:empresas/shared/utils/dependencies_container.dart';
 import 'package:mobx/mobx.dart';
 
 part 'home_controller.g.dart';
@@ -9,6 +8,8 @@ part 'home_controller.g.dart';
 class HomeController = _HomeControllerBase with _$HomeController;
 
 abstract class _HomeControllerBase with Store {
+  final SearchEnterprisesUsecase searchUsecase = getIt<SearchEnterprisesUsecase>();
+
   @observable
   List<Enterprise>? enterprises;
 
@@ -21,11 +22,8 @@ abstract class _HomeControllerBase with Store {
   @action
   Future<void> searchEnterprises(String query) async {
     isSearching = true;
-    try {
-      enterprises = await EnterprisesApi.search(query);
-    } on SocketException catch (_) {
-      searchError = 'connection_error';
-    } catch (_) {}
+    final searchResp = await searchUsecase(SearchParams(query: query));
+    searchResp.fold((l) => enterprises = [], (r) => enterprises = r);
     isSearching = false;
   }
 }
