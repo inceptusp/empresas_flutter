@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:empresas/features/list_enterprises/data/datasource/list_enterprises_datasource.dart';
 import 'package:empresas/features/list_enterprises/data/models/enterprise_model.dart';
@@ -66,22 +67,29 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
       'password': password,
     };
 
-    final response = await client.post(
-      Uri.parse('$_kServer/users/auth/sign_in'),
-      body: json.encode(requestBody),
-      headers: <String, String>{'Content-Type': 'application/json'},
-    );
+    try {
+      final response = await client.post(
+        Uri.parse('$_kServer/users/auth/sign_in'),
+        body: json.encode(requestBody),
+        headers: <String, String>{'Content-Type': 'application/json'},
+      );
 
-    if (response.statusCode == 200) {
-      final Map<String, dynamic> bodyJson = json.decode(response.body);
-      if (bodyJson['success']) {
-        InvestorModel investor = InvestorModel.fromJson(bodyJson['investor']);
-        return investor;
-      } else {
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> bodyJson = json.decode(response.body);
+        if (bodyJson['success']) {
+          InvestorModel investor = InvestorModel.fromJson(bodyJson['investor']);
+          return investor;
+        } else {
+          throw SignInFailure(message: bodyJson['errors'].first);
+        }
+      } else if (response.statusCode == 401) {
+        final Map<String, dynamic> bodyJson = json.decode(response.body);
         throw SignInFailure(message: bodyJson['errors'].first);
+      } else {
+        throw ServerException();
       }
-    } else {
-      throw ServerException();
+    } on SocketException {
+      throw ConnectionException();
     }
   }
 }
