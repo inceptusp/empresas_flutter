@@ -77,6 +77,9 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
       if (response.statusCode == 200) {
         final Map<String, dynamic> bodyJson = json.decode(response.body);
         if (bodyJson['success']) {
+          _authHeaders['uid'] = response.headers['uid']!;
+          _authHeaders['access-token'] = response.headers['access-token']!;
+          _authHeaders['client'] = response.headers['client']!;
           InvestorModel investor = InvestorModel.fromJson(bodyJson['investor']);
           return investor;
         } else {
