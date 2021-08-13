@@ -53,9 +53,10 @@ main() {
       (_) async => Left(tFailure),
     );
 
-    final result = await mockSignInRepository.signIn(tEmail, tPassword);
+    final result = await usecase(SignInParams(email: tEmail, password: tPassword));
 
-    verify(mockSignInRepository.signIn(tEmail, tPassword));
     expect(result, Left(tFailure));
+    verify(mockSignInRepository.signIn(tEmail, tPassword));
+    verifyNoMoreInteractions(mockSignInRepository);
   });
 }
