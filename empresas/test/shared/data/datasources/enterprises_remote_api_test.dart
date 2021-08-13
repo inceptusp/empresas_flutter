@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:empresas/features/list_enterprises/data/models/enterprise_model.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
@@ -169,7 +170,24 @@ main() {
       expect(call, throwsA(TypeMatcher<SignInFailure>()));
     });
 
-    test('Should thrown a ServerException on signIn when the response is NOT HTTP 200', () async {
+    test(
+        'Should throw a SignInFailure when the response is HTTP 401 and the sign in was NOT successful',
+        () async {
+      when(mockHttpClient.post(
+        any,
+        body: anyNamed('body'),
+        headers: anyNamed('headers'),
+      )).thenAnswer(
+        (_) async => http.Response(fixtureReader('user_fail.json'), 401),
+      );
+
+      final call = enterprisesApi.signIn(tEmail, tPassword);
+
+      expect(call, throwsA(TypeMatcher<SignInFailure>()));
+    });
+
+    test('Should thrown a ServerException on signIn when the response is NOT HTTP 200 or HTTP 401',
+        () async {
       when(mockHttpClient.post(
         any,
         body: anyNamed('body'),
@@ -181,6 +199,19 @@ main() {
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
       expect(call, throwsA(TypeMatcher<ServerException>()));
+    });
+
+    test('Should thrown a ConnectionException on signIn when the HTTP POST operation fails',
+        () async {
+      when(mockHttpClient.post(
+        any,
+        body: anyNamed('body'),
+        headers: anyNamed('headers'),
+      )).thenThrow(SocketException('Connection to [IP:PORT] failed'));
+
+      final call = enterprisesApi.signIn(tEmail, tPassword);
+
+      expect(call, throwsA(TypeMatcher<ConnectionException>()));
     });
   });
 }
