@@ -80,6 +80,7 @@ class _HomePageState extends State<HomePage> {
         }
       },
     );
+    _homeController.listAllEnterprises();
     super.initState();
   }
 
