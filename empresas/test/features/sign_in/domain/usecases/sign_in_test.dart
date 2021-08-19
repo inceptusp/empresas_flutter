@@ -19,9 +19,9 @@ main() {
     usecase = SignInUsecase(mockSignInRepository);
   });
 
-  final String tEmail = 'bob@bob.com';
-  final String tPassword = '12341234';
-  final Investor tInvestor = Investor(
+  const String tEmail = 'bob@bob.com';
+  const String tPassword = '12341234';
+  const Investor tInvestor = Investor(
     id: 1,
     name: 'bob',
     email: 'bob@bob.com',
@@ -37,25 +37,25 @@ main() {
 
   test('Should successfully sign in', () async {
     when(mockSignInRepository.signIn(any, any)).thenAnswer(
-      (_) async => Right(tInvestor),
+      (_) async => const Right(tInvestor),
     );
 
-    final result = await usecase(SignInParams(email: tEmail, password: tPassword));
+    final result = await usecase(const SignInParams(email: tEmail, password: tPassword));
 
-    expect(result, Right(tInvestor));
+    expect(result, const Right(tInvestor));
     verify(mockSignInRepository.signIn(tEmail, tPassword));
     verifyNoMoreInteractions(mockSignInRepository);
   });
 
   test('Should return a SignInFailure on unsuccessful sign in', () async {
-    final Failure tFailure = SignInFailure(message: 'Wrong Credentials');
+    const Failure tFailure = SignInFailure(message: 'Wrong Credentials');
     when(mockSignInRepository.signIn(any, any)).thenAnswer(
-      (_) async => Left(tFailure),
+      (_) async => const Left(tFailure),
     );
 
-    final result = await usecase(SignInParams(email: tEmail, password: tPassword));
+    final result = await usecase(const SignInParams(email: tEmail, password: tPassword));
 
-    expect(result, Left(tFailure));
+    expect(result, const Left(tFailure));
     verify(mockSignInRepository.signIn(tEmail, tPassword));
     verifyNoMoreInteractions(mockSignInRepository);
   });

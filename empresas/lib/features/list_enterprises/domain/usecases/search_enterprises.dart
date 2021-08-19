@@ -10,6 +10,7 @@ class SearchEnterprisesUsecase implements Usecase<List<Enterprise>, SearchParams
 
   SearchEnterprisesUsecase(this.repository);
 
+  @override
   Future<Either<Failure, List<Enterprise>>> call(SearchParams searchParams) async {
     return await repository.searchEnterprises(searchParams.query);
   }
@@ -18,7 +19,7 @@ class SearchEnterprisesUsecase implements Usecase<List<Enterprise>, SearchParams
 class SearchParams extends Equatable {
   final String query;
 
-  SearchParams({required this.query});
+  const SearchParams({required this.query});
 
   @override
   List<Object?> get props => <Object>[query];

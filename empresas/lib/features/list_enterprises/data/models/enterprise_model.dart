@@ -1,7 +1,7 @@
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 
 class EnterpriseModel extends Enterprise {
-  EnterpriseModel({
+  const EnterpriseModel({
     required id,
     email,
     facebook,

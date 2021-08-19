@@ -18,7 +18,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  HomeController _homeController = HomeController();
+  final HomeController _homeController = HomeController();
   late AppNavigator _appNavigator;
 
   @override

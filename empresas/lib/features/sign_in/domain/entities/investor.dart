@@ -15,7 +15,7 @@ class Investor extends Equatable {
   final bool firstAccess;
   final bool superAngel;
 
-  Investor({
+  const Investor({
     required this.id,
     required this.name,
     required this.email,

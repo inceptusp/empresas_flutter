@@ -3,7 +3,7 @@ import 'package:empresas/features/list_enterprises/domain/entities/enterprise.da
 import 'package:empresas/features/sign_in/domain/entities/investor.dart';
 
 class InvestorModel extends Investor {
-  InvestorModel({
+  const InvestorModel({
     required id,
     required name,
     required email,
@@ -58,9 +58,9 @@ class InvestorModel extends Investor {
     List<Map<String, dynamic>> portfolioEnterprisesList =
         List<Map<String, dynamic>>.empty(growable: true);
 
-    portfolioEnterprises.forEach((el) {
+    for (var el in portfolioEnterprises) {
       portfolioEnterprisesList.add((el as EnterpriseModel).toJson());
-    });
+    }
 
     return <String, dynamic>{
       'id': id,

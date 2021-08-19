@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 main() {
-  final InvestorModel tInvestorModel = InvestorModel(
+  const InvestorModel tInvestorModel = InvestorModel(
     id: 1,
     name: 'Teste Apple',
     email: 'testeapple@ioasys.com.br',

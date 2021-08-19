@@ -10,6 +10,7 @@ class SignInUsecase implements Usecase<Investor, SignInParams> {
 
   SignInUsecase(this.repository);
 
+  @override
   Future<Either<Failure, Investor>> call(SignInParams signInParams) async {
     return await repository.signIn(signInParams.email, signInParams.password);
   }
@@ -19,7 +20,7 @@ class SignInParams extends Equatable {
   final String email;
   final String password;
 
-  SignInParams({
+  const SignInParams({
     required this.email,
     required this.password,
   });

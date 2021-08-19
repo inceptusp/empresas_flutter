@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 import '../../../../fixtures/fixture_reader.dart';
 
 main() {
-  final EnterpriseModel tEnterpriseModel = EnterpriseModel(
+  const EnterpriseModel tEnterpriseModel = EnterpriseModel(
     id: 1,
     ownEnterprise: false,
     name: 'Superstore',

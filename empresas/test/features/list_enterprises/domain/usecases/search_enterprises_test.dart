@@ -18,9 +18,9 @@ main() {
     usecase = SearchEnterprisesUsecase(mockListEnterprisesRepository);
   });
 
-  final String tQuery = 'superstore';
+  const String tQuery = 'superstore';
   final List<Enterprise> tSearchResult = <Enterprise>[
-    Enterprise(
+    const Enterprise(
       id: 1,
       ownEnterprise: false,
       name: 'Superstore',
@@ -39,7 +39,7 @@ main() {
       (_) async => Right(tSearchResult),
     );
 
-    final result = await usecase(SearchParams(query: tQuery));
+    final result = await usecase(const SearchParams(query: tQuery));
 
     expect(result, Right(tSearchResult));
     verify(mockListEnterprisesRepository.searchEnterprises(tQuery));

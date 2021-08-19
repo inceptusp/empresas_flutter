@@ -16,9 +16,9 @@ main() {
   late SignInRepositoryImpl repository;
   late MockSignInDatasource mockSignInDatasource;
 
-  final String tEmail = 'testeapple@ioasys.com.br';
-  final String tPassword = '123';
-  final InvestorModel tInvestorModel = InvestorModel(
+  const String tEmail = 'testeapple@ioasys.com.br';
+  const String tPassword = '123';
+  const InvestorModel tInvestorModel = InvestorModel(
     id: 1,
     name: 'Teste Apple',
     email: 'testeapple@ioasys.com.br',
@@ -32,7 +32,7 @@ main() {
     firstAccess: false,
     superAngel: false,
   );
-  final Investor tInvestor = tInvestorModel;
+  const Investor tInvestor = tInvestorModel;
 
   setUp(() {
     mockSignInDatasource = MockSignInDatasource();
@@ -48,7 +48,7 @@ main() {
       final result = await repository.signIn(tEmail, tPassword);
 
       verify(mockSignInDatasource.signIn(tEmail, tPassword));
-      expect(result, Right(tInvestor));
+      expect(result, const Right(tInvestor));
     });
   });
 
@@ -59,7 +59,7 @@ main() {
       final result = await repository.signIn(tEmail, tPassword);
 
       verify(mockSignInDatasource.signIn(tEmail, tPassword));
-      expect(result, Left(ServerFailure()));
+      expect(result, const Left(ServerFailure(message: 'Failure test')));
     });
   });
 }

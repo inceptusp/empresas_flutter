@@ -15,7 +15,7 @@ class ListEnterprisesRepositoryImpl implements ListEnterprisesRepository {
     try {
       return Right(await datasource.getAllEnterprises());
     } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'connection_error'));
+      return const Left(ServerFailure(message: 'connection_error'));
     }
   }
 
@@ -24,7 +24,7 @@ class ListEnterprisesRepositoryImpl implements ListEnterprisesRepository {
     try {
       return Right(await datasource.searchEnterprises(query));
     } on ServerException catch (_) {
-      return Left(ServerFailure(message: 'connection_error'));
+      return const Left(ServerFailure(message: 'connection_error'));
     }
   }
 }

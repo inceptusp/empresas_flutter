@@ -18,7 +18,7 @@ main() {
 
   String tQuery = 'Superstore';
   List<EnterpriseModel> tEnterpriseModelList = <EnterpriseModel>[
-    EnterpriseModel(
+    const EnterpriseModel(
       id: 1,
       ownEnterprise: false,
       name: 'Superstore',
@@ -69,7 +69,7 @@ main() {
       final result = await repository.searchEnterprises(tQuery);
 
       verify(mockListEnterprisesDatasource.searchEnterprises(tQuery));
-      expect(result, Left(ServerFailure()));
+      expect(result, const Left(ServerFailure(message: 'Failure test')));
     });
 
     test('Should return a ServerFailure on all enterprises listing', () async {
@@ -78,7 +78,7 @@ main() {
       final result = await repository.getAllEnterprises();
 
       verify(mockListEnterprisesDatasource.getAllEnterprises());
-      expect(result, Left(ServerFailure()));
+      expect(result, const Left(ServerFailure(message: 'Failure test')));
     });
   });
 }

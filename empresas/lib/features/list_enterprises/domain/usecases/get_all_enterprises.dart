@@ -9,6 +9,7 @@ class GetAllEnterprisesUsecase implements Usecase<List<Enterprise>, NoParams> {
 
   GetAllEnterprisesUsecase(this.repository);
 
+  @override
   Future<Either<Failure, List<Enterprise>>> call(NoParams noParams) async {
     return await repository.getAllEnterprises();
   }

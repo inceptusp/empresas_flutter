@@ -20,7 +20,7 @@ main() {
   });
 
   final List<Enterprise> tEnterprises = <Enterprise>[
-    Enterprise(
+    const Enterprise(
       id: 1,
       ownEnterprise: false,
       name: 'Superstore',
@@ -30,7 +30,7 @@ main() {
       enterpriseTypeId: 1,
       enterpriseTypeName: 'Commerce',
     ),
-    Enterprise(
+    const Enterprise(
       id: 2,
       ownEnterprise: false,
       name: 'Bob\'s Restaurant',

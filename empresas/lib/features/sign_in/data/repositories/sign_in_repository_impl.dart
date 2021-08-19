@@ -15,9 +15,9 @@ class SignInRepositoryImpl implements SignInRepository {
     try {
       return Right(await datasource.signIn(email, password));
     } on ServerException {
-      return Left(ServerFailure(message: 'connection_error'));
+      return const Left(ServerFailure(message: 'connection_error'));
     } on ConnectionException {
-      return Left(ConnectionFailure(message: 'connection_error'));
+      return const Left(ConnectionFailure(message: 'connection_error'));
     } on SignInFailure catch (f) {
       return Left(SignInFailure(message: f.message));
     }

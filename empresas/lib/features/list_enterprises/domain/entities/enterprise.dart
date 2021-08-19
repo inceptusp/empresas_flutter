@@ -18,7 +18,7 @@ class Enterprise extends Equatable {
   final int enterpriseTypeId;
   final String enterpriseTypeName;
 
-  Enterprise({
+  const Enterprise({
     required this.id,
     this.email,
     this.facebook,

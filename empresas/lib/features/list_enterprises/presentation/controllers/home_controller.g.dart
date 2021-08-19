@@ -63,6 +63,15 @@ mixin _$HomeController on _HomeControllerBase, Store {
         .run(() => super.searchEnterprises(query));
   }
 
+  final _$listAllEnterprisesAsyncAction =
+      AsyncAction('_HomeControllerBase.listAllEnterprises');
+
+  @override
+  Future<void> listAllEnterprises() {
+    return _$listAllEnterprisesAsyncAction
+        .run(() => super.listAllEnterprises());
+  }
+
   @override
   String toString() {
     return '''

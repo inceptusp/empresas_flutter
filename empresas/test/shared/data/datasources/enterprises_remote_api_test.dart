@@ -26,7 +26,7 @@ main() {
   });
 
   group('ListEnterprises', () {
-    final String tQuery = 'Superstore';
+    const String tQuery = 'Superstore';
     final List<Enterprise> tEnterprisesList = List<Enterprise>.empty(growable: true);
     final Map<String, dynamic> fixtureJson = json.decode(fixtureReader('enterprises.json'));
     fixtureJson['enterprises'].forEach((el) {
@@ -67,7 +67,7 @@ main() {
 
       final call = enterprisesApi.getAllEnterprises;
 
-      expect(call, throwsA(TypeMatcher<ServerException>()));
+      expect(call, throwsA(const TypeMatcher<ServerException>()));
     });
 
     test('Should get a list of SEARCHED enterprises', () {
@@ -104,13 +104,13 @@ main() {
 
       final call = enterprisesApi.searchEnterprises;
 
-      expect(call(tQuery), throwsA(TypeMatcher<ServerException>()));
+      expect(call(tQuery), throwsA(const TypeMatcher<ServerException>()));
     });
   });
 
   group('SignIn', () {
-    final String tEmail = 'testeapple@ioasys.com.br';
-    final String tPassword = '1234';
+    const String tEmail = 'testeapple@ioasys.com.br';
+    const String tPassword = '1234';
     final Map<String, dynamic> tRequestBody = <String, dynamic>{
       'email': tEmail,
       'password': tPassword,
@@ -118,6 +118,11 @@ main() {
     final InvestorModel tInvestor = InvestorModel.fromJson(
       json.decode(fixtureReader('user_success.json'))['investor'],
     );
+    final Map<String, String> tResponseHeaders = <String, String>{
+      'uid': '',
+      'access-token': '',
+      'client': '',
+    };
 
     test('Should perform a sign in', () {
       when(mockHttpClient.post(
@@ -125,7 +130,11 @@ main() {
         body: anyNamed('body'),
         headers: anyNamed('headers'),
       )).thenAnswer(
-        (_) async => http.Response(fixtureReader('user_success.json'), 200),
+        (_) async => http.Response(
+          fixtureReader('user_success.json'),
+          200,
+          headers: tResponseHeaders,
+        ),
       );
 
       enterprisesApi.signIn(tEmail, tPassword);
@@ -146,7 +155,11 @@ main() {
         body: anyNamed('body'),
         headers: anyNamed('headers'),
       )).thenAnswer(
-        (_) async => http.Response(fixtureReader('user_success.json'), 200),
+        (_) async => http.Response(
+          fixtureReader('user_success.json'),
+          200,
+          headers: tResponseHeaders,
+        ),
       );
 
       final result = await enterprisesApi.signIn(tEmail, tPassword);
@@ -167,7 +180,7 @@ main() {
 
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
-      expect(call, throwsA(TypeMatcher<SignInFailure>()));
+      expect(call, throwsA(const TypeMatcher<SignInFailure>()));
     });
 
     test(
@@ -183,7 +196,7 @@ main() {
 
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
-      expect(call, throwsA(TypeMatcher<SignInFailure>()));
+      expect(call, throwsA(const TypeMatcher<SignInFailure>()));
     });
 
     test('Should thrown a ServerException on signIn when the response is NOT HTTP 200 or HTTP 401',
@@ -198,7 +211,7 @@ main() {
 
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
-      expect(call, throwsA(TypeMatcher<ServerException>()));
+      expect(call, throwsA(const TypeMatcher<ServerException>()));
     });
 
     test('Should thrown a ConnectionException on signIn when the HTTP POST operation fails',
@@ -207,11 +220,11 @@ main() {
         any,
         body: anyNamed('body'),
         headers: anyNamed('headers'),
-      )).thenThrow(SocketException('Connection to [IP:PORT] failed'));
+      )).thenThrow(const SocketException('Connection to [IP:PORT] failed'));
 
       final call = enterprisesApi.signIn(tEmail, tPassword);
 
-      expect(call, throwsA(TypeMatcher<ConnectionException>()));
+      expect(call, throwsA(const TypeMatcher<ConnectionException>()));
     });
   });
 }
