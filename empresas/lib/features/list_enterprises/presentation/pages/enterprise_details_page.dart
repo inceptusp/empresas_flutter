@@ -1,4 +1,3 @@
-import 'package:empresas/shared/data/datasources/enterprises_remote_api.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 import 'package:empresas/shared/presentation/widgets/eliptical_progress_indicator.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +16,12 @@ class EnterpriseDetailsPage extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           Image.network(
-            '${EnterprisesApi.server}${enterprise.photo}',
+            '${enterprise.photo}',
             loadingBuilder: (context, child, progress) {
               if (progress == null) {
                 return child;
               }
-              return SizedBox(
+              return const SizedBox(
                 height: 200,
                 child: Center(
                   child: ElipticalProgressIndicator(),

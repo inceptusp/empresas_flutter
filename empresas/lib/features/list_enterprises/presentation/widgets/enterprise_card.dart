@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:empresas/shared/data/datasources/enterprises_remote_api.dart';
 import 'package:empresas/features/list_enterprises/domain/entities/enterprise.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +19,7 @@ class EnterpriseCard extends StatelessWidget {
           height: 200,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: NetworkImage('${EnterprisesApi.server}${enterprise.photo}'),
+              image: NetworkImage('${enterprise.photo}'),
               fit: BoxFit.fill,
             ),
           ),

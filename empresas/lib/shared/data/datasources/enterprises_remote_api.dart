@@ -10,7 +10,8 @@ import 'package:empresas/shared/errors/failure.dart';
 import 'package:http/http.dart' as http;
 
 class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasource {
-  static const String _kServer = 'https://empresas.ioasys.com.br/api/v1';
+  static const String _kServer = 'https://empresas.ioasys.com.br';
+  static const String _kApi = '/api/v1';
   static final Map<String, String> _authHeaders = <String, String>{};
   final http.Client client;
 
@@ -19,7 +20,7 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
   @override
   Future<List<EnterpriseModel>> getAllEnterprises() async {
     final response = await client.get(
-      Uri.parse('$_kServer/enterprises'),
+      Uri.parse('$_kServer$_kApi/enterprises'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       }..addAll(_authHeaders),
@@ -29,6 +30,7 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
       final List<EnterpriseModel> enterprisesList = List<EnterpriseModel>.empty(growable: true);
       final Map<String, dynamic> bodyJson = json.decode(response.body);
       bodyJson['enterprises'].forEach((el) {
+        el['photo'] = el['photo'] == null ? null : _kServer + el['photo'];
         enterprisesList.add(EnterpriseModel.fromJson(el));
       });
 
@@ -41,7 +43,7 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
   @override
   Future<List<EnterpriseModel>> searchEnterprises(String query) async {
     final response = await client.get(
-      Uri.parse('$_kServer/enterprises?name=$query'),
+      Uri.parse('$_kServer$_kApi/enterprises?name=$query'),
       headers: <String, String>{
         'Content-Type': 'application/json',
       }..addAll(_authHeaders),
@@ -51,6 +53,7 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
       final List<EnterpriseModel> enterprisesList = List<EnterpriseModel>.empty(growable: true);
       final Map<String, dynamic> bodyJson = json.decode(response.body);
       bodyJson['enterprises'].forEach((el) {
+        el['photo'] = el['photo'] == null ? null : _kServer + el['photo'];
         enterprisesList.add(EnterpriseModel.fromJson(el));
       });
 
@@ -69,7 +72,7 @@ class EnterprisesRemoteApi implements SignInDatasource, ListEnterprisesDatasourc
 
     try {
       final response = await client.post(
-        Uri.parse('$_kServer/users/auth/sign_in'),
+        Uri.parse('$_kServer$_kApi/users/auth/sign_in'),
         body: json.encode(requestBody),
         headers: <String, String>{'Content-Type': 'application/json'},
       );
